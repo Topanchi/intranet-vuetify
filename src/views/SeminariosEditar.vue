@@ -38,6 +38,15 @@
                 <div class="input-group mb-2 mr-sm-2">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
+                            Fecha
+                        </div>
+                    </div>
+                    <input type="date" v-model="$v.seminario.fecha.$model" class="form-control">
+                </div>
+                
+                <div class="input-group mb-2 mr-sm-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
                             Año
                         </div>
                     </div>

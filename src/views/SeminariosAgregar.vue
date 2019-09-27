@@ -41,7 +41,7 @@
                                 Fecha
                             </div>
                         </div>
-                        <input type="text" class="form-control" v-model="$v.fecha.$model">
+                        <input type="date" class="form-control" v-model="$v.fecha.$model">
                     </div>
 
                     <div class="input-group mb-2 mr-sm-2">
