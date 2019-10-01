@@ -52,16 +52,15 @@
                   <i class="edit"></i><font-awesome-icon icon="edit" />
                 </span> |
               </router-link>
-              <span class="pointer" v-b-modal.modal-1>
-                <i class="eye"></i><font-awesome-icon icon="eye" />
-              </span>
+              <router-link :to="{name: 'verPublicaciones', params:{id: item.id}}">
+                <span class="pointer">
+                  <i class="eye"></i><font-awesome-icon icon="eye" />
+                </span>
+              </router-link>
             </td>
           </tr>
         </tbody>
       </table>
-      <b-modal id="modal-1" title="Detalles del artículo">
-       
-      </b-modal>
     </div>
   </div>
 </template>

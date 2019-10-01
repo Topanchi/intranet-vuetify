@@ -1,3 +1,4 @@
+
 <template>
   <div class="container">
     <div class="text-center">
@@ -17,3 +18,34 @@ export default {
   name: 'Inicio'
 }
 </script>
+
+<!--
+
+<script>
+import { mapActions,mapState, mapGetters } from "vuex";
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+export default {
+  name: 'Inicio',
+  data() {
+    return {
+      texto: ''
+    }
+  },
+  computed:{
+    ...mapState(['usuario','docencias', 'carga']),
+    ...mapGetters(['arrayFiltrado'])
+  },
+  methods:{
+    ...mapActions(['getDocencias', 'eliminarDocencia', 'buscador'])
+  },
+  created() {
+    this.getDocencias()
+  },
+  components:{
+    PulseLoader
+  }
+}
+</script>
+
+
+-->

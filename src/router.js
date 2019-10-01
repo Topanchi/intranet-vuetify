@@ -43,6 +43,12 @@ const router = new Router({
       meta: { requiresAuth: true }
     },
     {
+      path: '/verPublicaciones/:id',
+      name: 'verPublicaciones',
+      component: () => import(/* webpackChunkName: "verPublicaciones" */ './views/PublicacionesVer.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
       path: '/editarPublicaciones/:id',
       name: 'editarPublicaciones',
       component: () => import(/* webpackChunkName: "editarPublicaciones" */ './views/PublicacionesEditar.vue'),

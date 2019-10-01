@@ -31,7 +31,7 @@
         <v-icon>open_in_new</v-icon>
       </v-btn>
     </v-app-bar>
-  <!--
+<!--
     <b-navbar toggleable="lg" type="dark" variant="dark">
       <b-container>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -49,7 +49,7 @@
         </b-collapse>
       </b-container>
     </b-navbar>  
-  -->
+-->
     <v-content style="background-color:#f3f3f3">
       <router-view/>
     </v-content>
