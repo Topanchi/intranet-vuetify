@@ -6,11 +6,11 @@
         <button class="btn btn-success btn-sm btn-block">Agregar</button>
     </router-link>
 
-        <!--
-        <form @submit.prevent="buscador(texto)">
-            <input type="text" placeholder="Buscar..." class="form-control mt-5" v-model="texto" v-on:keyup="buscador(texto)">
-        </form>
-        -->
+        <!---->
+    <form @submit.prevent="buscador(texto)">
+      <input type="text" placeholder="Buscar..." class="form-control mt-5" v-model="texto" v-on:keyup="buscador(texto)">
+    </form>
+        
     <div v-if="carga" class="text-center mt-5">
       <h3>Cargando contenido...</h3>
       <pulse-loader :loading="carga"></pulse-loader>
