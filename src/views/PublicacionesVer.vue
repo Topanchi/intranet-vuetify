@@ -15,12 +15,16 @@
             <table class='table table-bordered table-responsive-lg table-fixed'>
                 <tbody>
                     <tr>
-                        <td>Autor</td>
+                        <td>id</td>
                         <td>{{}}</td>
                     </tr>
                     <tr>
+                        <td>Autor</td>
+                        <td></td>
+                    </tr>
+                    <tr>
                         <td>Título</td>
-                        <td>{{}}</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>Revista</td>
@@ -84,14 +88,16 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['getPublicacione'])
+        //...mapActions(['getPubid'])
+        //...mapActions(['getPublicacione'])
     },
     created() {
-        this.getPublicacione(this.id)
+        //this.getPubid()
+        //this.getPublicacione(this.id)
     },
     computed: {
         ...mapState(['publicacione','usuario','carga']),
-        ...mapGetters(['arrayFiltrado2'])
+        ...mapGetters(['especifico'])
     },
     components:{
         PulseLoader

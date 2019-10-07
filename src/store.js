@@ -141,6 +141,18 @@ export default new Vuex.Store({
           commit('setPublicacione', publicacione)
       })
     },
+    /*
+    getPubid({commit}){
+      db.collection('papers').doc($this.route.params.id).get()
+      //db.collection('papers').doc(publicacione.id).get()
+      .then(doc =>{
+          if (!docSnapshot.exists) return;
+          let publicacione = doc.data();
+          publicacione.id = doc.id
+          commit('setPublicacione', publicacione)
+      })
+    },
+    */
     getDocencias({commit}){
       commit('cargarFirebase', true);
       const docencias = []
@@ -395,11 +407,13 @@ export default new Vuex.Store({
         }
       }
       return arregloFiltrado;
-    },arrayFiltrado2(state){
+    },
+    arrayFiltrado2(state){
       let arregloFiltrado2 = []
       for(let publicacione of state.publicaciones){
         let autor = publicacione.autor.toLowerCase();
-        if(autor.indexOf(state.texto) >= 0){
+        let titulo = publicacione.titulo.toLowerCase();
+        if(autor.indexOf(state.texto) >= 0 || titulo.indexOf(state.texto) >= 0){
           arregloFiltrado2.push(publicacione);
         }
       }
@@ -424,6 +438,39 @@ export default new Vuex.Store({
         }
       }
       return arrayFiltrado4;
-    }  
+    },
+    especifico(state){
+      let especifico = []
+      for(let publicacione of state.publicaciones){
+        let autor = publicacione.autor.toLowerCase();
+        let titulo = publicacione.titulo.toLowerCase();
+        let revista = publicacione.revista.toLowerCase();
+        let estado = publicacione.estado.toLowerCase();
+        let paginas = publicacione.paginas.toLowerCase();
+        let vol = publicacione.vol.toLowerCase();
+        let doi = publicacione.doi.toLowerCase();
+        let isbn = publicacione.isbn.toLowerCase();
+        let link = publicacione.link.toLowerCase();
+        let impact = publicacione.impact.toLowerCase();
+        let categoria = publicacione.categoria.toLowerCase();
+        let ano = publicacione.ano.toLowerCase();
+        if(autor.indexOf(state.texto) >= 0 
+        || titulo.indexOf(state.texto) >= 0
+        || revista.indexOf(state.texto) >= 0 
+        || estado.indexOf(state.texto) >= 0
+        || paginas.indexOf(state.texto) >= 0 
+        || vol.indexOf(state.texto) >= 0
+        || doi.indexOf(state.texto) >= 0 
+        || isbn.indexOf(state.texto) >= 0
+        || link.indexOf(state.texto) >= 0 
+        || link.indexOf(state.texto) >= 0
+        || impact.indexOf(state.texto) >= 0 
+        || categoria.indexOf(state.texto) >= 0
+        || ano.indexOf(state.texto) >= 0){
+          especifico.push(publicacione);
+        }
+      }
+      return especifico;
+    }
   }
 })
