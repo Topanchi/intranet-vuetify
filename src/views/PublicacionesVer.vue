@@ -14,60 +14,8 @@
         <div class="card-body" v-if="!carga">
             <table class='table table-bordered table-responsive-lg table-fixed'>
                 <tbody>
-                    <tr>
-                        <td>id</td>
-                        <td>{{}}</td>
-                    </tr>
-                    <tr>
-                        <td>Autor</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Título</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Revista</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Estado</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Páginas</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Volumen</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Año</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Impact Factor</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>ISBN/ISSN</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Corresponding Author</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Categoría FONDECYT</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>DOI</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Link</td>
+                    <tr v-for="item of fields" :key="item.id">
+                        <td><strong>{{item}}</strong></td>
                         <td></td>
                     </tr>
                 </tbody>
@@ -84,16 +32,15 @@ export default {
     name: 'PublicacionesVer',
     data(){
         return{
-            id: this.$route.params.id
+            id: this.$route.params.id,
+            fields: ['Autor', 'Titulo', 'Revista', 'Estado', 'Páginas', 'Volumen', 'Año', 'Impact factor', 'ISBN/ISSN', 'Corresponding author', 'Categoría FONDECYT', 'DOI', 'Link']
         }
     },
     methods: {
-        //...mapActions(['getPubid'])
-        //...mapActions(['getPublicacione'])
+        ...mapActions(['getPublicacione'])
     },
     created() {
-        //this.getPubid()
-        //this.getPublicacione(this.id)
+        this.getPublicacione(this.id)
     },
     computed: {
         ...mapState(['publicacione','usuario','carga']),

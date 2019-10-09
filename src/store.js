@@ -137,22 +137,13 @@ export default new Vuex.Store({
       db.collection('papers').doc(id).get()
       .then(doc =>{
           let publicacione = doc.data();
+          console.log('Document data:', publicacione);
           publicacione.id = doc.id
           commit('setPublicacione', publicacione)
-      })
-    },
-    /*
-    getPubid({commit}){
-      db.collection('papers').doc($this.route.params.id).get()
-      //db.collection('papers').doc(publicacione.id).get()
-      .then(doc =>{
-          if (!docSnapshot.exists) return;
-          let publicacione = doc.data();
-          publicacione.id = doc.id
-          commit('setPublicacione', publicacione)
-      })
-    },
-    */
+      }).catch(err => {
+        console.log('Error getting document', err);
+      });
+    }, 
     getDocencias({commit}){
       commit('cargarFirebase', true);
       const docencias = []
@@ -361,7 +352,6 @@ export default new Vuex.Store({
       db.collection('papers').doc(id).delete()
       .then(()=>{
         console.log('Paper eliminado');
-        //dispatch('getTareas')
         commit('eliminarPublicaciones', id)
       })
     },
@@ -369,7 +359,6 @@ export default new Vuex.Store({
       db.collection('seminario').doc(id).delete()
       .then(()=>{
         console.log('Seminario eliminado');
-        //dispatch('getTareas')
         commit('eliminarSeminarios', id)
       })
     },
@@ -377,7 +366,6 @@ export default new Vuex.Store({
       db.collection('docencia').doc(id).delete()
       .then(()=>{
         console.log('Docencia eliminada');
-        //dispatch('getTareas')
         commit('eliminarDocencia', id)
       })
     },
@@ -385,7 +373,6 @@ export default new Vuex.Store({
       db.collection('invitado').doc(id).delete()
       .then(()=>{
         console.log('Invitado eliminado');
-        //dispatch('getTareas')
         commit('eliminarInvitados', id)
       })
     }
@@ -454,18 +441,12 @@ export default new Vuex.Store({
         let impact = publicacione.impact.toLowerCase();
         let categoria = publicacione.categoria.toLowerCase();
         let ano = publicacione.ano.toLowerCase();
-        if(autor.indexOf(state.texto) >= 0 
-        || titulo.indexOf(state.texto) >= 0
-        || revista.indexOf(state.texto) >= 0 
-        || estado.indexOf(state.texto) >= 0
-        || paginas.indexOf(state.texto) >= 0 
-        || vol.indexOf(state.texto) >= 0
-        || doi.indexOf(state.texto) >= 0 
-        || isbn.indexOf(state.texto) >= 0
-        || link.indexOf(state.texto) >= 0 
-        || link.indexOf(state.texto) >= 0
-        || impact.indexOf(state.texto) >= 0 
-        || categoria.indexOf(state.texto) >= 0
+        if(autor.indexOf(state.texto) >= 0 || titulo.indexOf(state.texto) >= 0
+        || revista.indexOf(state.texto) >= 0 || estado.indexOf(state.texto) >= 0
+        || paginas.indexOf(state.texto) >= 0 || vol.indexOf(state.texto) >= 0
+        || doi.indexOf(state.texto) >= 0 || isbn.indexOf(state.texto) >= 0
+        || link.indexOf(state.texto) >= 0 || link.indexOf(state.texto) >= 0
+        || impact.indexOf(state.texto) >= 0 || categoria.indexOf(state.texto) >= 0
         || ano.indexOf(state.texto) >= 0){
           especifico.push(publicacione);
         }
